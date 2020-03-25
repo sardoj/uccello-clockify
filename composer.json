@@ -1,0 +1,39 @@
+{
+    "name": "sardoj/clockify",
+    "description": "A time tracker for uccello.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan SARDO",
+            "email": "jonathan@uccellolabs.com"
+        }
+    ],
+    "require": {
+        "uccello/uccello": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sardoj\\Clockify\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sardoj\\Clockify\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sardoj\\Clockify\\Providers\\AppServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
