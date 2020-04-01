@@ -60,6 +60,7 @@ class CreateTrackerModule extends Migration
             $table->date('date_end')->nullable();
             $table->time('time_end')->nullable();
             $table->unsignedInteger('project_id')->nullable();
+            $table->text('description')->nullable();
             $table->unsignedInteger('domain_id');
             $table->timestamps();
             $table->softDeletes();
@@ -165,6 +166,17 @@ class CreateTrackerModule extends Migration
             'data' => json_decode('{"module":"project"}')
         ]);
 
+        // Field description
+        Field::create([
+            'module_id' => $module->id,
+            'block_id' => $block->id,
+            'name' => 'description',
+            'uitype_id' => uitype('textarea')->id,
+            'displaytype_id' => displaytype('everywhere')->id,
+            'sequence' => $block->fields()->count(),
+            'data' => null
+        ]);
+
     }
 
     protected function createFilters($module)
@@ -176,7 +188,7 @@ class CreateTrackerModule extends Migration
             'user_id' => null,
             'name' => 'filter.all',
             'type' => 'list',
-            'columns' => [ 'date_start', 'time_start', 'date_end', 'time_end', 'project' ],
+            'columns' => [ 'date_start', 'time_start', 'date_end', 'time_end', 'project', 'description' ],
             'conditions' => null,
             'order' => null,
             'is_default' => true,

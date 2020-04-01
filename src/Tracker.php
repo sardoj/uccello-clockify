@@ -25,11 +25,21 @@ class Tracker extends Model
      */
     protected $dates = ['deleted_at'];
 
+    protected $fillable = [
+        'date_start',
+        'time_start',
+        'date_end',
+        'time_end',
+        'description',
+        'project_id',
+        'domain_id'
+    ];
+
     protected function initTablePrefix()
     {
         $this->tablePrefix = 'clockify_';
     }
- 
+
     public function project()
     {
         return $this->belongsTo(\Sardoj\Clockify\Project::class);
